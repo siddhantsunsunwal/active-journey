@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -35,19 +36,12 @@
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
@@ -96,6 +90,69 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-fitness-primary text-fitness-light;
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* Typography for fitness app */
+  h1 {
+    @apply text-3xl font-bold tracking-tight md:text-4xl;
+  }
+
+  h2 {
+    @apply text-2xl font-bold tracking-tight md:text-3xl;
+  }
+
+  h3 {
+    @apply text-xl font-semibold;
+  }
+}
+
+@layer components {
+  .fitness-card {
+    @apply relative overflow-hidden rounded-xl bg-fitness-secondary p-4 shadow-lg transition-transform duration-300 hover:scale-[1.02];
+  }
+  
+  .fitness-btn-primary {
+    @apply flex items-center justify-center gap-2 rounded-lg bg-fitness-accent px-5 py-3 font-semibold text-white shadow-lg transition-all duration-300 hover:bg-opacity-90 active:scale-[0.98];
+  }
+  
+  .fitness-btn-secondary {
+    @apply flex items-center justify-center gap-2 rounded-lg border border-fitness-accent bg-transparent px-5 py-3 font-semibold text-fitness-accent shadow-md transition-all duration-300 hover:bg-fitness-accent/10 active:scale-[0.98];
+  }
+
+  .fitness-icon-button {
+    @apply flex h-10 w-10 items-center justify-center rounded-full bg-fitness-surface text-white transition-colors hover:bg-fitness-accent;
+  }
+
+  .fitness-input {
+    @apply w-full rounded-lg border border-fitness-surface bg-fitness-secondary px-4 py-3 text-fitness-light placeholder:text-fitness-muted focus:border-fitness-accent focus:outline-none;
+  }
+  
+  .fitness-tab {
+    @apply relative px-4 py-2 text-sm font-medium text-fitness-muted transition-colors hover:text-fitness-light data-[state=active]:text-fitness-accent;
+  }
+
+  .fitness-label {
+    @apply mb-2 block text-sm font-medium text-fitness-light;
+  }
+}
+
+@layer utilities {
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient 8s ease infinite;
+  }
+
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
   }
 }
