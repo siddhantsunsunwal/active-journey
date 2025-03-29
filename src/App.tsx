@@ -9,6 +9,9 @@ import Auth from "./pages/Auth";
 import NotFound from "./pages/NotFound";
 import { AuthProvider } from "./context/AuthContext";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
+import WorkoutDetail from "./pages/WorkoutDetail";
+import WorkoutCategory from "./pages/WorkoutCategory";
+import AllWorkouts from "./pages/AllWorkouts";
 
 const queryClient = new QueryClient();
 
@@ -22,6 +25,9 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/auth" element={<Auth />} />
+            <Route path="/workouts/:id" element={<WorkoutDetail />} />
+            <Route path="/workouts/category/:category" element={<WorkoutCategory />} />
+            <Route path="/workouts" element={<AllWorkouts />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

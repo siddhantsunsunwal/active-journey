@@ -112,9 +112,9 @@ const HomePage: React.FC = () => {
         <div>
           <div className="mb-4 flex items-center justify-between">
             <h2 className="text-xl font-bold">Featured Workouts</h2>
-            <button className="text-sm font-medium text-fitness-accent">
+            <Link to="/workouts" className="text-sm font-medium text-fitness-accent">
               View All
-            </button>
+            </Link>
           </div>
           <div>
             {featuredWorkouts.map((workout) => (
