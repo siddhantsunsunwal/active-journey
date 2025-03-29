@@ -3,6 +3,9 @@ import React from "react";
 import { Dumbbell, Heart, Clock } from "lucide-react";
 import WorkoutCard from "../components/workout/WorkoutCard";
 import CategoryCard from "../components/workout/CategoryCard";
+import ProfileMenu from "../components/profile/ProfileMenu";
+import { useAuth } from "@/context/AuthContext";
+import { Link } from "react-router-dom";
 
 // Mock data for workouts
 const featuredWorkouts = [
@@ -55,6 +58,8 @@ const categories = [
 ];
 
 const HomePage: React.FC = () => {
+  const { user } = useAuth();
+
   return (
     <div className="animate-fade-in pb-6">
       {/* Hero Section */}
@@ -65,12 +70,21 @@ const HomePage: React.FC = () => {
           alt="Fitness Hero"
           className="h-64 w-full object-cover object-center md:h-72"
         />
-        <div className="absolute bottom-0 left-0 right-0 p-6">
-          <h1 className="mb-2 text-white">Master<span className="text-fitness-accent">Plan</span></h1>
-          <p className="text-lg text-fitness-light">Your personalized fitness journey starts here</p>
-          <button className="fitness-btn-primary mt-4">
-            Generate Workout Plan
-          </button>
+        <div className="absolute bottom-0 left-0 right-0 flex items-center justify-between p-6">
+          <div>
+            <h1 className="mb-2 text-white">Master<span className="text-fitness-accent">Plan</span></h1>
+            <p className="text-lg text-fitness-light">Your personalized fitness journey starts here</p>
+            <button className="fitness-btn-primary mt-4">
+              Generate Workout Plan
+            </button>
+          </div>
+          {user ? (
+            <ProfileMenu />
+          ) : (
+            <Link to="/auth" className="fitness-btn-secondary">
+              Sign In
+            </Link>
+          )}
         </div>
       </div>
 
